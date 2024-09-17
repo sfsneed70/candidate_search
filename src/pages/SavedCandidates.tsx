@@ -17,7 +17,6 @@ const SavedCandidates = () => {
   };
 
   const removeCandidate = (candidateId: number) => {
-    // const candidates = readCandidates();
     const newCandidates = candidates.filter(
       (c: Candidate) => c.id !== candidateId
     );
@@ -28,7 +27,7 @@ const SavedCandidates = () => {
   const CurrentCandidate = ({ candidate }: { candidate: Candidate }) => {
   
     return (
-      <tr className="table-dark">
+      <tr className="text-break">
         <td>
           <img className="rounded-5" style={imgStyles} src={candidate.avatar_url} alt={candidate.login} />{" "}
         </td>
@@ -36,7 +35,7 @@ const SavedCandidates = () => {
           {candidate.name} ({candidate.login})
         </td>
         <td>{candidate.location}</td>
-        <td>{candidate.email}</td>
+        <td><a href={'mailto:' + candidate.email}>{candidate.email}</a></td>
         <td>{candidate.company}</td>
         <td>{candidate.bio}</td>
         <td className="text-center align-middle">
@@ -44,17 +43,12 @@ const SavedCandidates = () => {
             className="bg-transparent rounded-circle"
             onClick={() => removeCandidate(candidate.id)}
           >
-            {/* <img src={remove} alt="remove candidate" /> */}
             <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
           </button>
         </td>
       </tr>
     );
   };
-
-  // useEffect(() => {
-  //   setCandidates(readCandidates());
-  // }, []);
 
   const imgStyles = {
     width: 0,
@@ -67,9 +61,9 @@ const SavedCandidates = () => {
     return (
       <>
         <h1>Potential Candidates</h1>
-        <table className="table table-striped table-dark">
+        <table className="table table-striped table-dark table-bordered">
           <thead>
-            <tr className="p">
+            <tr className="text-center">
               <th scope="col">Avatar</th>
               <th scope="col">Name</th>
               <th scope="col">Location</th>

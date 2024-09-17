@@ -55,8 +55,8 @@ const CandidateSearch = () => {
       if (!gitHubUserLogin) {
         return;
       }
+
       const data = await searchGithubUser(candidates[index].login);
-      // const data = await searchGithubUser('Fenugreek');
 
       // no data returned so skip to next candidate
       if (!data.id) {
@@ -101,11 +101,9 @@ const CandidateSearch = () => {
           </div>
           <div className="d-flex justify-content-between">
             <button className="bg-transparent" onClick={nextCandidate}>
-              {/* <img style={iconStyles} src={remove} alt="remove candidate" /> */}
               <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
             </button>
             <button className="bg-transparent" onClick={addCandidate}>
-              {/* <img src={add} alt="add candidate" /> */}
               <FontAwesomeIcon style={styles.plusStyles} icon={faCirclePlus} size="4x"/>
             </button>
           </div>
