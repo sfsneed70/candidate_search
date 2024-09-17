@@ -5,10 +5,22 @@ const readCandidates = () => {
   return candidates ? JSON.parse(candidates) : [];
 };
 
-const writeCandidates = (candidate: Candidate) => {
-const candidates = readCandidates();
-    candidates.push(candidate);
+const updateCandidates = (candidate: Candidate) => {
+  const candidates = readCandidates();
+  candidates.push(candidate);
   localStorage.setItem("candidates", JSON.stringify(candidates));
 };
 
-export { readCandidates, writeCandidates };
+const writeCandidates = (candidates: Candidate[]) => {
+  localStorage.setItem("candidates", JSON.stringify(candidates));
+};
+
+// const removeCandidate = (candidate: Candidate) => {
+//   const candidates = readCandidates();
+//   const newCandidates = candidates.filter(
+//     (c: Candidate) => c.id !== candidate.id
+//   );
+//   localStorage.setItem("candidates", JSON.stringify(newCandidates));
+// };
+
+export { readCandidates, updateCandidates, writeCandidates };

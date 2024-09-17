@@ -3,7 +3,7 @@ import { searchGithub, searchGithubUser } from "../api/API";
 import { Candidate } from "../interfaces/Candidate.interface";
 import add from "../assets/add.png";
 import remove from "../assets/remove.png";
-import { writeCandidates } from "../utils/LocalStorage";
+import { updateCandidates } from "../utils/LocalStorage";
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -19,7 +19,7 @@ const CandidateSearch = () => {
     const data = await searchGithub();
     setCandidates(data);
     setIndex(0);
-    console.log("data:", data);
+    console.log("Candidates:", data);
   };
 
   useEffect(() => {
@@ -34,11 +34,10 @@ const CandidateSearch = () => {
     } else {
       setIndex(index + 1);
     }
-    // console.log("index:", index);
   };
 
   const addCandidate = () => {
-    writeCandidates(candidates[index]);
+    updateCandidates(candidate);
     nextCandidate();
   };
 
@@ -49,13 +48,13 @@ const CandidateSearch = () => {
         return;
       }
       const data = await searchGithubUser(candidates[index].login);
+      // const data = await searchGithubUser('Fenugreek');
 
       // no data returned so skip to next candidate
       if (!data.id) {
         nextCandidate();
       } else {
         setCandidate(data);
-        console.log("candidate:", candidates[index]);
       }
     };
 
@@ -77,7 +76,7 @@ const CandidateSearch = () => {
               alt="user avatar"
             />
             <h2 className="px-2 py-3" style={textStyles}>
-              {candidates[index].name} ({candidate.login})
+              {candidate.name} ({candidate.login})
             </h2>
             <h4 className="px-2 py-2" style={textStyles}>
               Location: {candidate.location}
@@ -93,11 +92,11 @@ const CandidateSearch = () => {
             </h4>
           </div>
           <div className="d-flex justify-content-between">
-            <button className="bg-transparent px-5" onClick={nextCandidate}>
-              <img src={remove} alt="remove user" />
+            <button className="bg-transparent rounded-circle" onClick={nextCandidate}>
+              <img src={remove} alt="remove candidate" />
             </button>
-            <button className="bg-transparent px-5" onClick={addCandidate}>
-              <img src={add} alt="add user" />
+            <button className="bg-transparent rounded-circle" onClick={addCandidate}>
+              <img src={add} alt="add candidate" />
             </button>
           </div>
         </div>
