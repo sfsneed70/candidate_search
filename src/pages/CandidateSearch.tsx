@@ -27,7 +27,6 @@ const CandidateSearch = () => {
     const data = await searchGithub();
     setCandidates(data);
     setIndex(0);
-    console.log("Candidates:", data);
   };
 
   useEffect(() => {
