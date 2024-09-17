@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { searchGithub, searchGithubUser } from "../api/API";
 import { Candidate } from "../interfaces/Candidate.interface";
 import { updateCandidates } from "../utils/LocalStorage";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -20,7 +20,7 @@ const CandidateSearch = () => {
     textStyles: {
       width: 0,
       minWidth: "100%",
-    }
+    },
   };
 
   const fetchCandidates = async () => {
@@ -101,10 +101,18 @@ const CandidateSearch = () => {
           </div>
           <div className="d-flex justify-content-between">
             <button className="bg-transparent" onClick={nextCandidate}>
-              <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
+              <FontAwesomeIcon
+                style={styles.minusStyles}
+                icon={faCircleMinus}
+                size="4x"
+              />
             </button>
             <button className="bg-transparent" onClick={addCandidate}>
-              <FontAwesomeIcon style={styles.plusStyles} icon={faCirclePlus} size="4x"/>
+              <FontAwesomeIcon
+                style={styles.plusStyles}
+                icon={faCirclePlus}
+                size="4x"
+              />
             </button>
           </div>
         </div>
