@@ -1,10 +1,20 @@
 import { Candidate } from "../interfaces/Candidate.interface";
 import { readCandidates, writeCandidates } from "../utils/LocalStorage";
-import remove from "../assets/remove.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";
 
 const SavedCandidates = () => {
   const [candidates, setCandidates] = useState<Candidate[]>(readCandidates());
+
+  const styles = {
+    minusStyles: {
+      color: "red",
+    },
+    plusStyles: {
+      color: "green",
+    },
+  };
 
   const removeCandidate = (candidateId: number) => {
     // const candidates = readCandidates();
@@ -34,7 +44,8 @@ const SavedCandidates = () => {
             className="bg-transparent rounded-circle"
             onClick={() => removeCandidate(candidate.id)}
           >
-            <img src={remove} alt="remove candidate" />
+            {/* <img src={remove} alt="remove candidate" /> */}
+            <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
           </button>
         </td>
       </tr>
@@ -58,7 +69,7 @@ const SavedCandidates = () => {
         <h1>Potential Candidates</h1>
         <table className="table table-striped table-dark">
           <thead>
-            <tr>
+            <tr className="p">
               <th scope="col">Avatar</th>
               <th scope="col">Name</th>
               <th scope="col">Location</th>

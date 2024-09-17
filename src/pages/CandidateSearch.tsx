@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { searchGithub, searchGithubUser } from "../api/API";
 import { Candidate } from "../interfaces/Candidate.interface";
-import add from "../assets/add.png";
-import remove from "../assets/remove.png";
 import { updateCandidates } from "../utils/LocalStorage";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [candidate, setCandidate] = useState<Candidate>({} as Candidate);
   const [index, setIndex] = useState(0);
 
-  const textStyles = {
-    width: 0,
-    minWidth: "100%",
+  const styles = {
+    minusStyles: {
+      color: "red",
+    },
+    plusStyles: {
+      color: "green",
+    },
+    textStyles: {
+      width: 0,
+      minWidth: "100%",
+    }
   };
 
   const fetchCandidates = async () => {
@@ -75,28 +83,30 @@ const CandidateSearch = () => {
               src={candidate.avatar_url}
               alt="user avatar"
             />
-            <h2 className="px-2 py-3" style={textStyles}>
+            <h2 className="px-2 py-3" style={styles.textStyles}>
               {candidate.name} ({candidate.login})
             </h2>
-            <h4 className="px-2 py-2" style={textStyles}>
+            <h4 className="px-2 py-2" style={styles.textStyles}>
               Location: {candidate.location}
             </h4>
-            <h4 className="px-2 py-2" style={textStyles}>
+            <h4 className="px-2 py-2" style={styles.textStyles}>
               Email: {candidate.email}
             </h4>
-            <h4 className="px-2 py-2" style={textStyles}>
+            <h4 className="px-2 py-2" style={styles.textStyles}>
               Company: {candidate.company}
             </h4>
-            <h4 className="px-2 py-2" style={textStyles}>
+            <h4 className="px-2 py-2" style={styles.textStyles}>
               Bio: {candidate.bio}
             </h4>
           </div>
           <div className="d-flex justify-content-between">
-            <button className="bg-transparent rounded-circle" onClick={nextCandidate}>
-              <img src={remove} alt="remove candidate" />
+            <button className="bg-transparent" onClick={nextCandidate}>
+              {/* <img style={iconStyles} src={remove} alt="remove candidate" /> */}
+              <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
             </button>
-            <button className="bg-transparent rounded-circle" onClick={addCandidate}>
-              <img src={add} alt="add candidate" />
+            <button className="bg-transparent" onClick={addCandidate}>
+              {/* <img src={add} alt="add candidate" /> */}
+              <FontAwesomeIcon style={styles.plusStyles} icon={faCirclePlus} size="4x"/>
             </button>
           </div>
         </div>
