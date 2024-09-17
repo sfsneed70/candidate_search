@@ -1,7 +1,7 @@
 import { Candidate } from "../interfaces/Candidate.interface";
 import { readCandidates, writeCandidates } from "../utils/LocalStorage";
 import remove from "../assets/remove.png";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SavedCandidates = () => {
   const [candidates, setCandidates] = useState<Candidate[]>(readCandidates());
@@ -18,9 +18,9 @@ const SavedCandidates = () => {
   const CurrentCandidate = ({ candidate }: { candidate: Candidate }) => {
   
     return (
-      <tr>
+      <tr className="table-dark">
         <td>
-          <img src={candidate.avatar_url} alt={candidate.login} />{" "}
+          <img className="rounded-5" style={imgStyles} src={candidate.avatar_url} alt={candidate.login} />{" "}
         </td>
         <td>
           {candidate.name} ({candidate.login})
@@ -29,7 +29,7 @@ const SavedCandidates = () => {
         <td>{candidate.email}</td>
         <td>{candidate.company}</td>
         <td>{candidate.bio}</td>
-        <td>
+        <td className="text-center align-middle">
           <button
             className="bg-transparent rounded-circle"
             onClick={() => removeCandidate(candidate.id)}
@@ -45,13 +45,18 @@ const SavedCandidates = () => {
   //   setCandidates(readCandidates());
   // }, []);
 
+  const imgStyles = {
+    width: 0,
+    minWidth: "100%",
+  };
+
   if (candidates.length === 0) {
     return <h1>No candidates to review.</h1>;
   } else {
     return (
       <>
         <h1>Potential Candidates</h1>
-        <table className="table table-striped">
+        <table className="table table-striped table-dark">
           <thead>
             <tr>
               <th scope="col">Avatar</th>
