@@ -4,6 +4,7 @@ import { Candidate } from "../interfaces/Candidate.interface";
 import { updateCandidates } from "../utils/LocalStorage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleMinus, faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { height } from "@fortawesome/free-solid-svg-icons/fa0";
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
@@ -19,6 +20,12 @@ const CandidateSearch = () => {
     },
     textStyles: {
       width: 0,
+      minWidth: "100%",
+    },
+    imgStyles: {
+      width: "450px",
+      height: "450px",
+      minHeight: "100%",
       minWidth: "100%",
     },
   };
@@ -55,6 +62,7 @@ const CandidateSearch = () => {
         return;
       }
 
+      // const data = await searchGithubUser('Fenugreek');
       const data = await searchGithubUser(candidates[index].login);
 
       // no data returned so skip to next candidate
@@ -78,6 +86,7 @@ const CandidateSearch = () => {
         <div className="d-flex flex-column flex-wrap">
           <div className="bg-dark rounded-5">
             <img
+              style={styles.imgStyles}
               className="rounded-top-5"
               src={candidate.avatar_url}
               alt="user avatar"
