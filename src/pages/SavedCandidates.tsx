@@ -1,7 +1,7 @@
 import { Candidate } from "../interfaces/Candidate.interface";
 import { readCandidates, writeCandidates } from "../utils/LocalStorage";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleMinus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 const SavedCandidates = () => {
@@ -25,18 +25,26 @@ const SavedCandidates = () => {
   };
 
   const CurrentCandidate = ({ candidate }: { candidate: Candidate }) => {
-  
     return (
       <tr className="text-break">
         <td>
-          <img className="rounded-5" style={imgStyles} src={candidate.avatar_url} alt={candidate.login} />{" "}
+          <img
+            className="rounded-5"
+            style={imgStyles}
+            src={candidate.avatar_url}
+            alt={candidate.login}
+          />{" "}
         </td>
         <td>
           {candidate.name} ({candidate.login})
         </td>
         <td>{candidate.location}</td>
-        <td><a href={'mailto:' + candidate.email}>{candidate.email}</a></td>
-        <td><a href={candidate.html_url}>{candidate.html_url}</a></td>
+        <td>
+          <a href={"mailto:" + candidate.email}>{candidate.email}</a>
+        </td>
+        <td>
+          <a href={candidate.html_url}>{candidate.html_url}</a>
+        </td>
         <td>{candidate.company}</td>
         <td>{candidate.bio}</td>
         <td className="text-center align-middle">
@@ -44,7 +52,11 @@ const SavedCandidates = () => {
             className="bg-transparent rounded-circle"
             onClick={() => removeCandidate(candidate.id)}
           >
-            <FontAwesomeIcon style={styles.minusStyles} icon={faCircleMinus} size="4x"/>
+            <FontAwesomeIcon
+              style={styles.minusStyles}
+              icon={faCircleMinus}
+              size="4x"
+            />
           </button>
         </td>
       </tr>

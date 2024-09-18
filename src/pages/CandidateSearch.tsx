@@ -61,7 +61,6 @@ const CandidateSearch = () => {
         return;
       }
 
-      // const data = await searchGithubUser('Fenugreek');
       const data = await searchGithubUser(candidates[index].login);
 
       // no data returned so skip to next candidate
@@ -82,8 +81,8 @@ const CandidateSearch = () => {
     return (
       <>
         <h1>Candidate Search</h1>
-        <div className="d-flex flex-column flex-wrap">
-          <div className="bg-dark rounded-5">
+        <div>
+          <div className="bg-dark rounded-5 text-break">
             <img
               style={styles.imgStyles}
               className="rounded-top-5"
@@ -97,7 +96,7 @@ const CandidateSearch = () => {
               Location: {candidate.location}
             </h4>
             <h4 className="px-2 py-2" style={styles.textStyles}>
-              Email: <a href={'mailto:' + candidate.email}>{candidate.email}</a>
+              Email: <a href={"mailto:" + candidate.email}>{candidate.email}</a>
             </h4>
             <h4 className="px-2 py-2" style={styles.textStyles}>
               Profile: <a href={candidate.html_url}>{candidate.html_url}</a>
