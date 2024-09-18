@@ -90,7 +90,7 @@ const CandidateSearch = () => {
               src={candidate.avatar_url}
               alt="user avatar"
             />
-            <h2 className="px-2 py-3" style={styles.textStyles}>
+            <h2 className="px-2 py-2" style={styles.textStyles}>
               {candidate.name} ({candidate.login})
             </h2>
             <h4 className="px-2 py-2" style={styles.textStyles}>
