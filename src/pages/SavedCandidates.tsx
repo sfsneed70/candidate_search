@@ -36,6 +36,7 @@ const SavedCandidates = () => {
         </td>
         <td>{candidate.location}</td>
         <td><a href={'mailto:' + candidate.email}>{candidate.email}</a></td>
+        <td><a href={candidate.html_url}>{candidate.html_url}</a></td>
         <td>{candidate.company}</td>
         <td>{candidate.bio}</td>
         <td className="text-center align-middle">
@@ -68,6 +69,7 @@ const SavedCandidates = () => {
               <th scope="col">Name</th>
               <th scope="col">Location</th>
               <th scope="col">Email</th>
+              <th scope="col">Profile</th>
               <th scope="col">Company</th>
               <th scope="col">Bio</th>
               <th scope="col">Reject</th>

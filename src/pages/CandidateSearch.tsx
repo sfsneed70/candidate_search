@@ -69,6 +69,7 @@ const CandidateSearch = () => {
         nextCandidate();
       } else {
         setCandidate(data);
+        console.log(data.email);
       }
     };
 
@@ -97,7 +98,10 @@ const CandidateSearch = () => {
               Location: {candidate.location}
             </h4>
             <h4 className="px-2 py-2" style={styles.textStyles}>
-              Email: {candidate.email}
+              Email: <a href={'mailto:' + candidate.email}>{candidate.email}</a>
+            </h4>
+            <h4 className="px-2 py-2" style={styles.textStyles}>
+              Profile: <a href={candidate.html_url}>{candidate.html_url}</a>
             </h4>
             <h4 className="px-2 py-2" style={styles.textStyles}>
               Company: {candidate.company}
