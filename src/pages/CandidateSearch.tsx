@@ -69,7 +69,6 @@ const CandidateSearch = () => {
         nextCandidate();
       } else {
         setCandidate(data);
-        console.log(data.email);
       }
     };
 
