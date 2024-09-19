@@ -22,8 +22,8 @@ const CandidateSearch = () => {
       minWidth: "100%",
     },
     imgStyles: {
-      width: "450px",
-      height: "450px",
+      width: "350px",
+      height: "350px",
       minHeight: "100%",
       minWidth: "100%",
     },
@@ -92,21 +92,21 @@ const CandidateSearch = () => {
             <h2 className="px-2 py-2" style={styles.textStyles}>
               {candidate.name} ({candidate.login})
             </h2>
-            <h4 className="px-2 py-2" style={styles.textStyles}>
+            <h5 className="px-2 py-2" style={styles.textStyles}>
               Location: {candidate.location}
-            </h4>
-            <h4 className="px-2 py-2" style={styles.textStyles}>
+            </h5>
+            <h5 className="px-2 py-2" style={styles.textStyles}>
               Email: <a href={"mailto:" + candidate.email}>{candidate.email}</a>
-            </h4>
-            <h4 className="px-2 py-2" style={styles.textStyles}>
+            </h5>
+            <h5 className="px-2 py-2" style={styles.textStyles}>
               Profile: <a href={candidate.html_url}>{candidate.html_url}</a>
-            </h4>
-            <h4 className="px-2 py-2" style={styles.textStyles}>
+            </h5>
+            <h5 className="px-2 py-2" style={styles.textStyles}>
               Company: {candidate.company}
-            </h4>
-            <h4 className="px-2 py-2" style={styles.textStyles}>
+            </h5>
+            <h5 className="px-2 py-2" style={styles.textStyles}>
               Bio: {candidate.bio}
-            </h4>
+            </h5>
           </div>
           <div className="d-flex justify-content-between">
             <button className="bg-transparent" onClick={nextCandidate}>
